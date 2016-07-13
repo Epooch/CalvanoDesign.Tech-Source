@@ -49,7 +49,7 @@
   <build>
     <finalName>calvanodesignsource</finalName>
 
-<!-- 	I USING THE MAVEN COMPILER VIA COMMAND LINE -->
+<!-- 	UNCOMMENT! If you are not using Maven via command line -->
 <!--       <plugins> -->
 <!-- 			<plugin> -->
 <!-- 				<groupId>org.apache.maven.plugins</groupId> -->
