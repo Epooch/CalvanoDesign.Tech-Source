@@ -1,4 +1,4 @@
-package tech.calvanodesign;
+package tech.calvanodesign.web;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -35,7 +35,7 @@ public class HelloWorldMB implements Serializable {
     public void saveMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
          
-        context.addMessage(null, new FacesMessage("Successful",  "Your message: " + message) );
-        context.addMessage(null, new FacesMessage("Second Message", "Additional Message Detail"));
+        context.addMessage(null, new FacesMessage("Successful", message) );
+        context.addMessage(null, new FacesMessage("Folder move was a okay", "That's cool"));
     }
 }
