@@ -9,6 +9,7 @@
 	
     <h:head>
     	<title>JSF 2.0 Hello World</title>
+    	<h:outputStylesheet library="css" name="style.css" />
     </h:head>
     <h:body>
        	<h2>JSF 2.0 Hello World Example - welcome.xhtml</h2>
@@ -17,7 +18,7 @@
     	    <p:growl id="growl" showDetail="true" sticky="true" />  
  
 		    <p:panel header="Growl">  
-		        <h:panelGrid columns="2" cellpadding="5">  
+		        <h:panelGrid columns="2" cellpadding="5" styleClass="test">  
 		            <p:outputLabel for="msg" value="Message:" />   
 		            <p:inputText id="msg" value="#{helloWorldMB.message}" required="true" />  
 		        </h:panelGrid>  
