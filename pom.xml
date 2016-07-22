@@ -22,21 +22,29 @@
 
 	<dependency>
 		<groupId>javax.servlet</groupId>
-		<artifactId>jstl</artifactId>
-		<version>1.2</version>
-	</dependency>
-
-	<dependency>
-		<groupId>javax.servlet</groupId>
 		<artifactId>servlet-api</artifactId>
 		<version>2.5</version>
+		<scope>provided</scope>
 	</dependency>
 
 	<dependency>
 		<groupId>javax.servlet.jsp</groupId>
 		<artifactId>jsp-api</artifactId>
 		<version>2.1</version>
+		<scope>provided</scope>
 	</dependency>
+	
+     <dependency>
+         <groupId>commons-logging</groupId>
+         <artifactId>commons-logging</artifactId>
+         <version>1.1.1</version>
+     </dependency>
+     
+     <dependency>
+         <groupId>commons-lang</groupId>
+         <artifactId>commons-lang</artifactId>
+         <version>2.6</version>
+     </dependency>
 	
     <dependency>
       <groupId>junit</groupId>
@@ -49,24 +57,43 @@
 	    <groupId>org.primefaces</groupId>  
 	    <artifactId>primefaces</artifactId>  
 	    <version>6.0</version>  
-	</dependency>  
+	</dependency>
+
+			<!-- spring-context which provides core functionality -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>4.2.5.RELEASE</version>
+	</dependency>
+    <!-- Spring core - Note: the version should be updated to latest if the spring-context does not work. -->
+<!--     <dependency> -->
+<!--         <groupId>org.springframework</groupId> -->
+<!--         <artifactId>spring-core</artifactId> -->
+<!--         <version>3.2.0.RELEASE</version> -->
+<!--     </dependency> -->
+			<!-- The spring-web module provides basic web-oriented integration features 
+			such as multipart file upload functionality and the initialization of the 
+			IoC container using Servlet listeners and a web-oriented application context -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>4.2.5.RELEASE</version>
+	</dependency>
 	
   </dependencies>
   <build>
     <finalName>calvanodesignsource</finalName>
-
-<!-- 	UNCOMMENT! If you are not using Maven via command line -->
-<!--       <plugins> -->
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-compiler-plugin</artifactId> -->
-<!-- 				<version>2.3.1</version> -->
-<!-- 				<configuration> -->
-<!-- 					<source>1.6</source> -->
-<!-- 					<target>1.6</target> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
-<!-- 		</plugins> -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
     
   </build>
   
