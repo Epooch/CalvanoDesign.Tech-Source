@@ -1,5 +1,5 @@
 package tech.calvanodesign.business;
- 
+
 /**
  * HelloWorld Business Object interface.
  * @author eric.calvano

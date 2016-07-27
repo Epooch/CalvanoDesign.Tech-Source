@@ -1,13 +1,13 @@
 package tech.calvanodesign.business;
 
-import org.springframework.stereotype.Service;
+import javax.inject.Named;
 
 /**
  * HelloWorld Business Object Implementation
  * @author Eric
  *
  */
-@Service
+@Named("helloWorldBo")
 public class HelloWorldBoImpl implements HelloWorldBo {
 
 	/**
@@ -17,8 +17,5 @@ public class HelloWorldBoImpl implements HelloWorldBo {
 	public void springTest(String name) {
 		// TODO Auto-generated method stub
 		System.out.println("HelloWorldBoImpl:: springTest : " + name);
-		
 	}
-	
-	
 }
