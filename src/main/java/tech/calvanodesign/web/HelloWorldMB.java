@@ -29,7 +29,7 @@ public class HelloWorldMB implements Serializable {
 	private String name;
 	
 	@PostConstruct
-	public void postConstruct (ActionEvent e) {
+	public void init () {
 		System.out.println("HelloWorldMB.init()");
 		//session = (HttpSession)FacesContext.getExternalContext().getSession(true);
 		if (helloWorldBo != null)
