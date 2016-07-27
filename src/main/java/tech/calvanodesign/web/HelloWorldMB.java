@@ -6,7 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import tech.calvanodesign.business.HelloWorldBo;
 
@@ -31,15 +30,12 @@ public class HelloWorldMB implements Serializable {
 	@PostConstruct
 	public void init () {
 		System.out.println("HelloWorldMB.init()");
-		//session = (HttpSession)FacesContext.getExternalContext().getSession(true);
 		if (helloWorldBo != null)
 			return;
 		System.out.println("helloWorldBo is null");
 	}
 	
 	public void springTest() {
-		// Output some info
-        System.out.println("HelloWorldBean:: Testing Spring imlementation - helloWorldBo.name : " + name);
 		// Call the business object to register the user
 		helloWorldBo.springTest(name);
         // Set the message here
@@ -49,7 +45,6 @@ public class HelloWorldMB implements Serializable {
 	
     // Set the registrationBo attribute used by Spring
     public void setHelloWorldBo(HelloWorldBo helloWorldBo) {
-    	System.out.println("setHelloWorldBo");
         this.helloWorldBo = helloWorldBo;
     }
     
@@ -58,28 +53,23 @@ public class HelloWorldMB implements Serializable {
     }
 
 	public String getName() {
-		System.out.println("getName");
 		return name;
 	}
 	public void setName(String name) {
-		System.out.println("setName");
 		this.name = name;
 	}
 	
     private String message;
     
     public String getMessage() {
-    	System.out.println("getMessage");
         return message;
     }
  
     public void setMessage(String message) {
-    	System.out.println("setMessage");
         this.message = message;
     }
      
     public void saveMessage() {
-    	System.out.println("saveMessage");
         FacesContext context = FacesContext.getCurrentInstance();
          
         context.addMessage(null, new FacesMessage("Successful", message) );
