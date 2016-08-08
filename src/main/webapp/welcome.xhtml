@@ -16,18 +16,17 @@
     		#{helloWorldMB.message}
     		<p:growl id="growl" showDetail="true" sticky="true" /> 
     	   	<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"/>
-    		<h2>Welcome #{helloWorldMB.name}</h2> 
+    		<h2>Welcome #{helloWorldMB.rssFeed}</h2> 
 		    <p:panel header="Growl">  
 		        <h:panelGrid columns="2" cellpadding="5" styleClass="test">  
 		            <p:outputLabel for="msg" value="Message:" />   
-		            <p:inputText id="msg" value="#{helloWorldMB.message}" required="true" />  
+		            <p:inputText id="msg" value="#{helloWorldMB.message}"/>  
 		        </h:panelGrid>
 		        <p:commandButton value="Save" actionListener="#{helloWorldMB.saveMessage}" update="growl" />  
 		    </p:panel>
-    		<p:editor value="#{helloWorldMB.name}" />
 			<p:panel>
-				<p:inputText id="intxtSpringTest" value="#{helloWorldMB.name}"/>
-				<p:commandButton id="cmdbtnSpringTest" value="Test Spring 3 with JSF" actionListener="#{helloWorldMB.springTest}" ajax="false"/>
+				<p:inputText id="intxtRssFeed" value="#{helloWorldMB.rssFeed}"/>
+				<p:commandButton id="cmdbtnRefreshRSSFeed" actionListener="#{helloWorldMB.setRss}"/>
 			</p:panel>
 		</h:form>
     </h:body>

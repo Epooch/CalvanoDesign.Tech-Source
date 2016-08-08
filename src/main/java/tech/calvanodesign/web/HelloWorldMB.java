@@ -6,8 +6,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import tech.calvanodesign.business.HelloWorldBo;
+import tech.calvanodesign.object.RSS;
 
 import java.io.Serializable;
 
@@ -22,25 +24,41 @@ public class HelloWorldMB implements Serializable {
 	
 	@ManagedProperty(value = "#{helloWorldBo}")
 	private HelloWorldBo helloWorldBo;
+	
+	//This managed property is not set and cannot be used
+	//@ManagedProperty(value = "#{RSS}")
+	private RSS rssObj;
 
 	private static final long serialVersionUID = 1L;
 	
-	private String name;
+	private String rssFeed;
 	
 	@PostConstruct
 	public void init () {
 		System.out.println("HelloWorldMB.init()");
-		if (helloWorldBo != null)
+		if (helloWorldBo == null)
+		{
+			System.out.println("helloWorldBo is null");
 			return;
-		System.out.println("helloWorldBo is null");
+		}
+		rssObj = new RSS();
 	}
 	
-	public void springTest() {
-		// Call the business object to register the user
-		helloWorldBo.springTest(name);
-        // Set the message here
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Spring test success", "success");  
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+	public void setRss() {
+		System.out.println(">> RefreshRSS");
+		// Call the business object and perform action for retrieving RSS feed
+		helloWorldBo.setRssUrl(rssFeed);
+		
+		rssObj = helloWorldBo.readRssFeed();
+		System.out.println("<< Returned RSS title; " + rssObj.title);
+		System.out.println("<< Returned RSS summary;" + rssObj.summary);
+		// Set the message here
+        //FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "rssObj", rssObj.getTitle());  
+        //FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	
+	public void displayRss(RSS rssObj){
+		System.out.println(">> DisplayRSS");
 	}
 	
     // Set the registrationBo attribute used by Spring
@@ -52,11 +70,11 @@ public class HelloWorldMB implements Serializable {
     	return helloWorldBo;
     }
 
-	public String getName() {
-		return name;
+	public String getRssFeed() {
+		return rssFeed;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setRssFeed(String rssFeed) {
+		this.rssFeed = rssFeed;
 	}
 	
     private String message;
