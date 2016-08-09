@@ -1,9 +1,4 @@
 package tech.calvanodesign.business.Helper;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,9 +7,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import tech.calvanodesign.object.RSS;
-import com.sun.syndication.feed.rss.Channel;
-import com.sun.syndication.feed.rss.Content;
-import com.sun.syndication.feed.rss.Item;
 
 public class CustomRssViewer {
 	

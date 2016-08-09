@@ -8,25 +8,18 @@
 	  xmlns:p="http://primefaces.org/ui">
 	
     <h:head>
-    	<title>JSF 2.0 Hello World</title>
+    	<title>Calvano D and D</title>
     	<h:outputStylesheet library="css" name="style.css" />
     </h:head>
     <h:body>
     	<h:form>
-    		#{helloWorldMB.message}
-    		<p:growl id="growl" showDetail="true" sticky="true" /> 
     	   	<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"/>
-    		<h2>Welcome #{helloWorldMB.rssFeed}</h2> 
-		    <p:panel header="Growl">  
-		        <h:panelGrid columns="2" cellpadding="5" styleClass="test">  
-		            <p:outputLabel for="msg" value="Message:" />   
-		            <p:inputText id="msg" value="#{helloWorldMB.message}"/>  
-		        </h:panelGrid>
-		        <p:commandButton value="Save" actionListener="#{helloWorldMB.saveMessage}" update="growl" />  
-		    </p:panel>
+    		<h2>Calvano Design RSS Feed Reader</h2> 
 			<p:panel>
+				<h2>Enter RSS feed below!</h2>
 				<p:inputText id="intxtRssFeed" value="#{helloWorldMB.rssFeed}"/>
-				<p:commandButton id="cmdbtnRefreshRSSFeed" actionListener="#{helloWorldMB.setRss}"/>
+				<p:commandButton id="cmdbtnRefreshRSSFeed" actionListener="#{helloWorldMB.fetchRss}" update="editRetRssFeed"/>
+				<p:editor id="editRetRssFeed" value="#{helloWorldMB.rssObj.summary}"/>
 			</p:panel>
 		</h:form>
     </h:body>

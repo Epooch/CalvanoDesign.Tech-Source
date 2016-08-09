@@ -18,18 +18,12 @@ public class HelloWorldBoImpl implements HelloWorldBo {
 	/**
 	 * get RSS Feed  
 	 */
-	@Override
 	public void setRssUrl(String rssUrl) {
 		System.out.println("~~ HelloWorldBOImpl.setRssUrl; " + rssUrl);
-		if (retRss != null) {
-			System.out.println("retRSS is not null and rssURL is not going to be set.");
-			return;
-		}
 		retRss = new RSS();
 		retRss.setURL(rssUrl);
 	}
 
-	@Override
 	public RSS readRssFeed() {
 		System.out.println("~~ HelloWorldBOImpl.readRssFeed;");
 		if (retRss == null) {
