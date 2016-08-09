@@ -42,7 +42,7 @@ public class HelloWorldMB implements Serializable {
 		}
 		
 		helloWorldBo.init();
-		System.out.println("<< HelloWorldBo.init()");
+		System.out.println("<< HelloWorldBoImpl.init()");
 		rssFeed = new String();
 		rssObjs = new ArrayList<RSS>();
 		rssUrls = new ArrayList<String>();
