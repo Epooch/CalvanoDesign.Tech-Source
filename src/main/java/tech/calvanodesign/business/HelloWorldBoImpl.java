@@ -34,9 +34,8 @@ public class HelloWorldBoImpl implements HelloWorldBo {
 			retRss.setTitle("Error no url is present.");
 			return null;
 		}
-		CustomRssViewer rssViewer = new CustomRssViewer();
-		 
 		
+		CustomRssViewer rssViewer = new CustomRssViewer();	
 		return rssViewer.readStream(retRss.url);
 	}
 	

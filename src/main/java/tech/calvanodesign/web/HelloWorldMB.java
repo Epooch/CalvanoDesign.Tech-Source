@@ -51,7 +51,6 @@ public class HelloWorldMB implements Serializable {
 		helloWorldBo.setRssUrl(rssFeed);
 		
 		rssObjs = helloWorldBo.readRssFeed();
-		System.out.println(rssObjs.get(1).title);
 		System.out.println("<< RefreshRSS finished");
 	}
 	
