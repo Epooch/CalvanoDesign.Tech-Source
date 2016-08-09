@@ -1,5 +1,7 @@
 package tech.calvanodesign.business;
 
+import java.util.List;
+
 import javax.inject.Named;
 
 import tech.calvanodesign.object.RSS;
@@ -14,6 +16,7 @@ import tech.calvanodesign.business.Helper.CustomRssViewer;
 public class HelloWorldBoImpl implements HelloWorldBo {
 
 	public RSS retRss;
+	
 
 	/**
 	 * get RSS Feed  
@@ -24,17 +27,17 @@ public class HelloWorldBoImpl implements HelloWorldBo {
 		retRss.setURL(rssUrl);
 	}
 
-	public RSS readRssFeed() {
+	public List<RSS> readRssFeed() {
 		System.out.println("~~ HelloWorldBOImpl.readRssFeed;");
 		if (retRss == null) {
 			System.out.println("retRSS is null. Nothing to read.");
 			retRss.setTitle("Error no url is present.");
-			return retRss;
+			return null;
 		}
 		CustomRssViewer rssViewer = new CustomRssViewer();
-		retRss = rssViewer.readStream(retRss.url);
-		retRss.setTitle("testTitle");
-		return retRss;
+		 
+		
+		return rssViewer.readStream(retRss.url);
 	}
 	
 	public void getRetRSS(RSS rssObj){

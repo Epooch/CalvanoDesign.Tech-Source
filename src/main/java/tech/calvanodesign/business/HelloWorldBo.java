@@ -1,5 +1,7 @@
 package tech.calvanodesign.business;
 
+import java.util.List;
+
 import tech.calvanodesign.object.RSS;
 
 /**
@@ -11,5 +13,5 @@ public interface HelloWorldBo {
     
     public void setRssUrl(String rssUrl);
     
-    public RSS readRssFeed();
+    public List<RSS> readRssFeed();
 }

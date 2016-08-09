@@ -12,14 +12,22 @@
     	<h:outputStylesheet library="css" name="style.css" />
     </h:head>
     <h:body>
-    	<h:form>
+    	<h:form id="frmRssReader">
     	   	<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"/>
     		<h2>Calvano Design RSS Feed Reader</h2> 
 			<p:panel>
 				<h2>Enter RSS feed below!</h2>
 				<p:inputText id="intxtRssFeed" value="#{helloWorldMB.rssFeed}"/>
-				<p:commandButton id="cmdbtnRefreshRSSFeed" actionListener="#{helloWorldMB.fetchRss}" update="editRetRssFeed"/>
-				<p:editor id="editRetRssFeed" value="#{helloWorldMB.rssObj.summary}"/>
+				<p:commandButton id="cmdbtnRefreshRSSFeed" action="#{helloWorldMB.fetchRss}" update="@form" value="Refresh RSS Feed"/>
+				<p:dataTable id="dtblRetRssFeed" var="rss" value="#{helloWorldMB.rssObjs}">	
+				    <p:column headerText="Rss Title">
+				        <h:outputText value="#{rss.title}" />
+				    </p:column>
+				 
+				    <p:column headerText="Rss Summary">
+				        <h:outputText value="#{rss.summary}" />
+				    </p:column>
+				</p:dataTable>
 			</p:panel>
 		</h:form>
     </h:body>

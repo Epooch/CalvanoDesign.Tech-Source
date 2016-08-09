@@ -3,13 +3,14 @@ package tech.calvanodesign.web;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import tech.calvanodesign.business.HelloWorldBo;
 import tech.calvanodesign.object.RSS;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -29,6 +30,8 @@ public class HelloWorldMB implements Serializable {
 	
 	private String rssFeed;
 	
+	private List<RSS> rssObjs;
+	
 	@PostConstruct
 	public void init () {
 		System.out.println("HelloWorldMB.init()");
@@ -39,6 +42,7 @@ public class HelloWorldMB implements Serializable {
 		}
 		rssObj = new RSS();
 		rssFeed = new String();
+		rssObjs = new ArrayList<RSS>();
 	}
 	
 	public void fetchRss() {
@@ -46,9 +50,9 @@ public class HelloWorldMB implements Serializable {
 		// Call the business object and perform action for retrieving RSS feed
 		helloWorldBo.setRssUrl(rssFeed);
 		
-		rssObj = helloWorldBo.readRssFeed();
-		System.out.println("<< Returned RSS title; " + rssObj.title);
-		System.out.println("<< Returned RSS summary;" + rssObj.summary);
+		rssObjs = helloWorldBo.readRssFeed();
+		System.out.println(rssObjs.get(1).title);
+		System.out.println("<< RefreshRSS finished");
 	}
 	
     public void setHelloWorldBo(HelloWorldBo helloWorldBo) {
@@ -72,5 +76,13 @@ public class HelloWorldMB implements Serializable {
 	
 	public void setRssObj(RSS rssObj){
 		this.rssObj = rssObj;
+	}
+	
+	public List<RSS> getRssObjs() {
+		return rssObjs;
+	}
+	
+	public void setRssObjs(List<RSS> rssObjs) {
+		this.rssObjs = rssObjs;
 	}
 }
