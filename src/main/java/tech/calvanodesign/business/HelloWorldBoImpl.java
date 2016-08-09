@@ -1,5 +1,7 @@
 package tech.calvanodesign.business;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Named;
@@ -15,35 +17,45 @@ import tech.calvanodesign.business.Helper.CustomRssViewer;
 @Named("helloWorldBo")
 public class HelloWorldBoImpl implements HelloWorldBo {
 
-	public RSS retRss;
+	public List<String> rssUrls;
+	public CustomRssViewer rssViewer;
 	
+	/**
+	 * Initialize 
+	 */
+	public void init() {
+		System.out.println("~~ HelloWorldBOImpl.init()");
+		rssViewer = new CustomRssViewer();
+		rssUrls = new ArrayList<String>();
+	}
 
 	/**
-	 * get RSS Feed  
+	 * Sets rss feed url  
 	 */
 	public void setRssUrl(String rssUrl) {
 		System.out.println("~~ HelloWorldBOImpl.setRssUrl; " + rssUrl);
-		retRss = new RSS();
-		retRss.setURL(rssUrl);
+		rssUrls.add(rssUrl);
+		for (String testRssUrl : rssUrls)
+		{
+			System.out.println("## Test RSS URL list: " + testRssUrl);
+		}
 	}
 
 	public List<RSS> readRssFeed() {
-		System.out.println("~~ HelloWorldBOImpl.readRssFeed;");
-		if (retRss == null) {
-			System.out.println("retRSS is null. Nothing to read.");
-			retRss.setTitle("Error no url is present.");
-			return null;
+		System.out.println("~~ HelloWorldBOImpl.readRssFeed;");	
+		List<RSS> retRss = new ArrayList<RSS>();
+		for (String rssUrl : rssUrls)
+		{
+			retRss.addAll(rssViewer.readStream(rssUrl));
 		}
-		
-		CustomRssViewer rssViewer = new CustomRssViewer();	
-		return rssViewer.readStream(retRss.url);
+		return retRss;
 	}
 	
-	public void getRetRSS(RSS rssObj){
-		this.retRss = rssObj;
+	public void getRssUrls(List<String> rssUrls){
+		this.rssUrls = rssUrls;
 	}
 	
-	public RSS setRetRss(){
-		return this.retRss;
+	public List<String> setRssUrls(){
+		return this.rssUrls;
 	}
 }

@@ -10,6 +10,8 @@ import tech.calvanodesign.object.RSS;
  *
  */
 public interface HelloWorldBo {
+	
+	public void init();
     
     public void setRssUrl(String rssUrl);
     

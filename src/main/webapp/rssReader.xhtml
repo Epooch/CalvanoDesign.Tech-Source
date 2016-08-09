@@ -16,9 +16,17 @@
     	   	<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"/>
     		<h2>Calvano Design RSS Feed Reader</h2> 
 			<p:panel>
-				<h2>Enter RSS feed below!</h2>
+				<h2>Add RSS URL to list below!</h2>
+				    <p:dataList value="#{helloWorldMB.rssUrls}" var="url" type="ordered">
+				        <f:facet name="header">
+				            Rss Feed URLS
+				        </f:facet>
+				        #{url}
+				    </p:dataList>
 				<p:inputText id="intxtRssFeed" value="#{helloWorldMB.rssFeed}"/>
-				<p:commandButton id="cmdbtnRefreshRSSFeed" action="#{helloWorldMB.fetchRss}" update="@form" value="Refresh RSS Feed"/>
+				<p:commandButton id="cmdbtnRefreshRssFeed" action="#{helloWorldMB.refreshRss}" update="@form" value="Refresh Rss Feed Data"/>
+				<p:commandButton id="cmdbtnPullRssFeed" action="#{helloWorldMB.pullRss}" update="@form" value="Pull Rss Feed Data"/>
+				<p:commandButton id="cmdbtnAddToRssFeed" action="#{helloWorldMB.addRssUrlToList}" update="@form" value="Add to RSS Feed Reader"/>
 				<p:dataTable id="dtblRetRssFeed" var="rss" value="#{helloWorldMB.rssObjs}">	
 				    <p:column headerText="Rss Title">
 				        <h:outputText value="#{rss.title}" />
