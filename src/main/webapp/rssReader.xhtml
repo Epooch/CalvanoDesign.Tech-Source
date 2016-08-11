@@ -17,17 +17,17 @@
     		<h2>Calvano Design RSS Feed Reader</h2> 
 			<p:panel>
 				<h2>Add RSS URL to list below!</h2>
-				    <p:dataList value="#{helloWorldMB.rssUrls}" var="url" type="ordered">
+				    <p:dataList value="#{richSiteSummaryReaderMB.rssUrls}" var="url" type="ordered">
 				        <f:facet name="header">
 				            Rss Feed URLS
 				        </f:facet>
 				        #{url}
 				    </p:dataList>
-				<p:inputText id="intxtRssFeed" value="#{helloWorldMB.rssFeed}"/>
-				<p:commandButton id="cmdbtnRefreshRssFeed" action="#{helloWorldMB.refreshRss}" rendered="#{not empty helloWorldMB.rssObjs}" update="@form" value="Refresh Rss Feed Data"/>
-				<p:commandButton id="cmdbtnPullRssFeed" action="#{helloWorldMB.pullRss}" update="@form" value="Pull Rss Feed Data"/>
-				<p:commandButton id="cmdbtnAddToRssFeed" action="#{helloWorldMB.addRssUrlToList}" update="@form" value="Add to RSS Feed Reader"/>
-				<p:dataTable id="dtblRetRssFeed" var="rss" value="#{helloWorldMB.rssObjs}">	
+				<p:inputText id="intxtRssFeed" value="#{richSiteSummaryReaderMB.rssFeed}"/>
+				<p:commandButton id="cmdbtnRefreshRssFeed" action="#{richSiteSummaryReaderMB.refreshRss}" rendered="#{not empty richSiteSummaryReaderMB.rssObjs}" update="@form" value="Refresh Rss Feed Data"/>
+				<p:commandButton id="cmdbtnPullRssFeed" action="#{richSiteSummaryReaderMB.pullRss}" update="@form" value="Pull Rss Feed Data" rendered="#{not empty richSiteSummaryReaderMB.rssUrls}"/>
+				<p:commandButton id="cmdbtnAddToRssFeed" action="#{richSiteSummaryReaderMB.addRssUrlToList}" update="@form" value="Add to RSS Feed Reader"/>
+				<p:dataTable id="dtblRetRssFeed" var="rss" value="#{richSiteSummaryReaderMB.rssObjs}">	
 				    <p:column headerText="Rss Title">
 				        <h:outputText value="#{rss.title}" />
 				    </p:column>
