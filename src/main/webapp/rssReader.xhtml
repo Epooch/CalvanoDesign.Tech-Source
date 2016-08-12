@@ -9,11 +9,32 @@
 	
     <h:head>
     	<title>Calvano D and D</title>
+    	<h:outputStylesheet library="css" name="sc-player-standard.css" />
     	<h:outputStylesheet library="css" name="style.css" />
+    	<h:outputScript library="js" name="/soundCloud/sdk-3.1.2.js"/>
+    	<h:outputScript library="js" name="/soundCloud/iframe.js"/>
+<!--      	<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" /> -->
     </h:head>
     <h:body>
     	<h:form id="frmRssReader">
     	   	<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"/>
+    	   	<h:outputScript target="head">
+			    $ = jQuery;
+			    // Then you can use it
+			    $(document).ready(function() {
+			    
+			    });
+			</h:outputScript>
+			<h:outputScript id="soundcloudLogin" library="js" name="/soundCloud/login.js" rendered="#{richSiteSummaryReaderMB.loginShow}" />
+    		
+    		<h2>Calvano Design SoundCloud Player</h2>
+    		<p:panel>
+				<h2>SoundCloud Functionality</h2>
+				<iframe width="25%" height="250" scrolling="no" frameborder="1" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/249140883&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+				<br/>
+				<p:commandButton value="Login To SoundCloud" actionListener="#{richSiteSummaryReaderMB.requestSoundCloudLogin}"/>
+    		</p:panel>
+    		<br/>
     		<h2>Calvano Design RSS Feed Reader</h2> 
 			<p:panel>
 				<h2>Add RSS URL to list below!</h2>
@@ -36,7 +57,11 @@
 				        <h:outputText value="#{rss.summary}" />
 				    </p:column>
 				</p:dataTable>
+				
 			</p:panel>
 		</h:form>
+     	<h:outputScript library="js" name="jquery-3.1.0.min.js" target="head"/>
+    	<h:outputScript library="js" name="/soundCloud/soundcloud.player.api.js" target="head" />
+    	<h:outputScript library="js" name="/soundCloud/sc-player.js" target="head"/>
     </h:body>
 </html>

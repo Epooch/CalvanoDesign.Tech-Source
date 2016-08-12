@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.ActionEvent;
 
 import tech.calvanodesign.business.RSSReaderBo;
 import tech.calvanodesign.object.RSS;
@@ -31,6 +32,8 @@ public class RichSiteSummaryReaderMB implements Serializable {
 	private List<RSS> rssObjs;
 	
 	private List<String> rssUrls;
+	
+	private boolean loginShow;
 	
 	@PostConstruct
 	public void init () {
@@ -72,6 +75,10 @@ public class RichSiteSummaryReaderMB implements Serializable {
 		System.out.println("<< RSSReaderMB.addRssUrlToList");
 	}
 	
+	public void requestSoundCloudLogin(ActionEvent e) {
+		loginShow = true;
+	}
+	
     public void setRssReaderBo(RSSReaderBo rSSReaderBo) {
         this.rssReaderBo = rSSReaderBo;
     }
@@ -96,6 +103,20 @@ public class RichSiteSummaryReaderMB implements Serializable {
 		this.rssUrls = rssUrls;
 	}
 	
+	/**
+	 * @return the loginShow
+	 */
+	public boolean isLoginShow() {
+		return loginShow;
+	}
+
+	/**
+	 * @param loginShow the loginShow to set
+	 */
+	public void setLoginShow(boolean loginShow) {
+		this.loginShow = loginShow;
+	}
+
 	public List<RSS> getRssObjs() {
 		return rssObjs;
 	}
