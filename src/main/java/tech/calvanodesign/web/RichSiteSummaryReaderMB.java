@@ -6,6 +6,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
+import org.apache.log4j.Logger;
+
 import tech.calvanodesign.business.RSSReaderBo;
 import tech.calvanodesign.object.RSS;
 
@@ -22,6 +24,8 @@ import java.util.List;
 @ViewScoped
 public class RichSiteSummaryReaderMB implements Serializable {
 	
+	final static Logger logger = Logger.getLogger(RichSiteSummaryReaderMB.class);
+	
 	@ManagedProperty(value = "#{rSSReaderBo}")
 	private RSSReaderBo rssReaderBo;
 
@@ -37,42 +41,43 @@ public class RichSiteSummaryReaderMB implements Serializable {
 	
 	@PostConstruct
 	public void init () {
-		System.out.println("RSSReaderMB.init()");
+		logger.debug("RSSReaderMB.init()");
+		
 		if (rssReaderBo == null)
 		{
-			System.out.println("**[ERROR]**RSSReaderBo is null");
+			logger.error("RSSReaderBo is null");
 			return;
 		}
 		
 		rssReaderBo.init();
-		System.out.println("<< RSSReaderBoImpl.init()");
+		logger.debug("<< RSSReaderBoImpl.init()");
 		rssFeed = new String();
 		rssObjs = new ArrayList<RSS>();
 		rssUrls = new ArrayList<String>();
 	}
 	
 	public void pullRss() {
-		System.out.println(">> RSSReaderMB.pullRss");
+		logger.debug(">> RSSReaderMB.pullRss");
 		
 		if (!rssFeed.isEmpty())//Not empty
 		{
 			rssUrls.add(rssFeed);
 		}
 		rssObjs = rssReaderBo.readRssFeed(rssUrls);
-		System.out.println("<< RSSReaderMB.pullRss");
+		logger.debug("<< RSSReaderMB.pullRss");
 	}
 	
 	public void refreshRss() {
-		System.out.println(">> RSSReaderMB.refreshRss");
+		logger.debug(">> RSSReaderMB.refreshRss");
 		rssObjs = rssReaderBo.readRssFeed(rssUrls);
-		System.out.println("<< RSSReaderMB.refreshRss");
+		logger.debug("<< RSSReaderMB.refreshRss");
 	}
 	
 	public void addRssUrlToList() {
-		System.out.println(">> RSSReaderMB.addRssUrlToList");
+		logger.debug(">> RSSReaderMB.addRssUrlToList");
 		rssUrls.add(rssFeed);
 		clearRssFeedInput();
-		System.out.println("<< RSSReaderMB.addRssUrlToList");
+		logger.debug("<< RSSReaderMB.addRssUrlToList");
 	}
 	
 	public void requestSoundCloudLogin(ActionEvent e) {
@@ -126,8 +131,8 @@ public class RichSiteSummaryReaderMB implements Serializable {
 	}
 	
 	private void clearRssFeedInput() {
-		System.out.println("--clearRssFeedInput();");
+		logger.debug("--clearRssFeedInput();");
 		rssFeed = "";
-		System.out.println("//cleared for new input");
+		logger.debug("//cleared for new input");
 	}
 }

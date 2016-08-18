@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.inject.Named;
 
+import org.apache.log4j.Logger;
+
 import tech.calvanodesign.object.RSS;
 import tech.calvanodesign.business.Helper.CustomRssViewer;
 
@@ -16,6 +18,7 @@ import tech.calvanodesign.business.Helper.CustomRssViewer;
  */
 @Named("rSSReaderBo")
 public class RSSReaderBoImpl implements RSSReaderBo {
+	final static Logger logger = Logger.getLogger(RSSReaderBoImpl.class);
 
 	public CustomRssViewer rssViewer;
 	
@@ -23,12 +26,12 @@ public class RSSReaderBoImpl implements RSSReaderBo {
 	 * Initialize 
 	 */
 	public void init() {
-		System.out.println("~~ RSSReaderBoImpl.init()");
+		logger.debug("~~ RSSReaderBoImpl.init()");
 		rssViewer = new CustomRssViewer();
 	}
 
 	public List<RSS> readRssFeed(List<String> rssUrls) {
-		System.out.println("~~ RSSReaderBoImpl.readRssFeed;");	
+		logger.debug("~~ RSSReaderBoImpl.readRssFeed;");	
 		List<RSS> retRss = new ArrayList<RSS>();
 		for (String rssUrl : rssUrls)
 		{
