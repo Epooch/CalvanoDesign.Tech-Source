@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
 
 import org.apache.log4j.Logger;
 
@@ -22,7 +23,27 @@ public class SoundCloudPlayerMB implements Serializable {
 	
 	private String helloWorld = "helloWorld";
 	
+	private boolean loginShow;
+	
 	public void init() {
 		logger.debug("SoundCloudPlayerMB.ini); " + helloWorld);
+	}
+	
+	/**
+	 * @return the loginShow
+	 */
+	public boolean isLoginShow() {
+		return loginShow;
+	}
+
+	/**
+	 * @param loginShow the loginShow to set
+	 */
+	public void setLoginShow(boolean loginShow) {
+		this.loginShow = loginShow;
+	}
+	
+	public void requestSoundCloudLogin(ActionEvent e) {
+		loginShow = true;
 	}
 }
