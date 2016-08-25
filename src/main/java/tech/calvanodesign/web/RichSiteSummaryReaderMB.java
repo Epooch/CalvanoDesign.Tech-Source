@@ -24,20 +24,18 @@ import java.util.List;
 @ViewScoped
 public class RichSiteSummaryReaderMB implements Serializable {
 	
+	private static final long serialVersionUID = -5142981300074618434L;
+
 	final static Logger logger = Logger.getLogger(RichSiteSummaryReaderMB.class);
 	
 	@ManagedProperty(value = "#{rSSReaderBo}")
 	private RSSReaderBo rssReaderBo;
 
-	private static final long serialVersionUID = 1L;
-	
 	private String rssFeed;
 	
 	private List<RSS> rssObjs;
 	
 	private List<String> rssUrls;
-	
-	private boolean loginShow;
 	
 	@PostConstruct
 	public void init () {
@@ -80,10 +78,6 @@ public class RichSiteSummaryReaderMB implements Serializable {
 		logger.debug("<< RSSReaderMB.addRssUrlToList");
 	}
 	
-	public void requestSoundCloudLogin(ActionEvent e) {
-		loginShow = true;
-	}
-	
     public void setRssReaderBo(RSSReaderBo rSSReaderBo) {
         this.rssReaderBo = rSSReaderBo;
     }
@@ -106,20 +100,6 @@ public class RichSiteSummaryReaderMB implements Serializable {
 	
 	public void setRssUrls(List<String> rssUrls) {
 		this.rssUrls = rssUrls;
-	}
-	
-	/**
-	 * @return the loginShow
-	 */
-	public boolean isLoginShow() {
-		return loginShow;
-	}
-
-	/**
-	 * @param loginShow the loginShow to set
-	 */
-	public void setLoginShow(boolean loginShow) {
-		this.loginShow = loginShow;
 	}
 
 	public List<RSS> getRssObjs() {

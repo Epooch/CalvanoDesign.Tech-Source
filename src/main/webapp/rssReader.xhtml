@@ -26,13 +26,7 @@
 			    
 			    });
 			</h:outputScript>
-			<h:outputScript id="soundcloudLogin" library="js" name="/soundCloud/login.js" rendered="#{richSiteSummaryReaderMB.loginShow}" />
-    		<p:accordionPanel id="acrdnPnlForm" >
-				<p:tab title="SoundCloud Player">
-					<iframe width="25%" height="250" scrolling="no" frameborder="1" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/249140883&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-					<br/>
-					<h:commandButton value="Login To SoundCloud" actionListener="#{richSiteSummaryReaderMB.requestSoundCloudLogin}"/>
-				</p:tab>
+    		<p:accordionPanel>
 				<p:tab id="tabRssFeedReader" title="RSS Feed Reader">
 					<p:dataList id="dtalstRssUrls" value="#{richSiteSummaryReaderMB.rssUrls}" var="url" type="ordered">
 			        	<f:facet name="header">
@@ -41,25 +35,20 @@
 			        	#{url}
 			    	</p:dataList>
    					<p:inputText id="intxtRssFeed" value="#{richSiteSummaryReaderMB.rssFeed}" required="true" requiredMessage="A RSS feed url is required."/>
-					<p:commandButton id="cmdbtnRefreshRssFeed" action="#{richSiteSummaryReaderMB.refreshRss}" rendered="#{not empty richSiteSummaryReaderMB.rssObjs}" update="dtblRetRssFeed" value="Refresh Rss Feed Data"/>
-					<p:commandButton id="cmdbtnPullRssFeed" action="#{richSiteSummaryReaderMB.pullRss}" update="tabRssFeedReader" value="Pull Rss Feed Data" rendered="#{not empty richSiteSummaryReaderMB.rssUrls}"/>
-					<p:commandButton id="cmdbtnAddToRssFeed" action="#{richSiteSummaryReaderMB.addRssUrlToList}" update="frmRssReader:acrdnPnlForm:tab#{acrdnPnlForm.activeIndex}" value="Add to RSS Feed Reader"/>
+					<p:commandButton action="#{richSiteSummaryReaderMB.refreshRss}" rendered="#{not empty richSiteSummaryReaderMB.rssObjs}" update="dtblRetRssFeed" value="Refresh Rss Feed Data" immediate="true"/>
+					<p:commandButton action="#{richSiteSummaryReaderMB.pullRss}" value="Pull Rss Feed Data" rendered="#{not empty richSiteSummaryReaderMB.rssUrls}" immediate="true"/>
+					<p:commandButton action="#{richSiteSummaryReaderMB.addRssUrlToList}" update="@form" value="Add to RSS Feed Reader"/>
 					<p:message id="msgRssFeed" for="intxtRssFeed"/>
 					<p:dataTable id="dtblRetRssFeed" var="rss" value="#{richSiteSummaryReaderMB.rssObjs}">	
 					    <p:column headerText="Rss Title">
 					        <h:outputText value="#{rss.title}" />
-					    </p:column>
-					 
+					    </p:column>					 
 					    <p:column headerText="Rss Summary">
 					        <h:outputText value="#{rss.summary}" />
 					    </p:column>
 					</p:dataTable>
-					<p:outputLabel value="frmRssReader:acrdnPnlForm:tab#{acrdnPnlForm.activeIndex}"/>
 				</p:tab>
 			</p:accordionPanel>
 		</h:form>
-     	<h:outputScript library="js" name="jquery-3.1.0.min.js" target="head"/>
-    	<h:outputScript library="js" name="/soundCloud/soundcloud.player.api.js" target="head" />
-    	<h:outputScript library="js" name="/soundCloud/sc-player.js" target="head"/>
     </h:body>
 </html>
