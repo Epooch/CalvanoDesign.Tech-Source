@@ -16,7 +16,6 @@ import com.sun.syndication.io.XmlReader;
 import tech.calvanodesign.object.RSS;
 
 public class CustomRssViewer {
-	
 	public List<RSS> readStream(String url)
 	{
 		List<RSS> rssList = new ArrayList<RSS>();
@@ -28,24 +27,8 @@ public class CustomRssViewer {
 	
 			SyndFeed feed = input.build(new XmlReader(rssUrl));
 			
-			for (SyndEntry entry : (List<SyndEntry>) feed.getEntries()) {
-				RSS retRss = new RSS();
-			    retRss.title = entry.getTitle();
-			    SyndContent description = entry.getDescription();
-			    if (description != null)
-			    {
-			    	String descriptionValue = description.getValue();
-			    	String cleanDescription = descriptionValue.replaceAll("\\<.*?>","").replaceAll("\\s+", " ");
-			    	retRss.summary = cleanDescription;
-			    }
-			    else
-			    {
-			    	retRss.summary = "No summary available.";
-			    }
-			    retRss.createdDate = entry.getPublishedDate();
-			    retRss.url = entry.getUri();
-			    rssList.add(retRss);
-			}
+			readFeedToRssList(rssList, feed);
+			
 			return rssList;
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -61,5 +44,33 @@ public class CustomRssViewer {
 			e.printStackTrace();
 		}
 		return rssList;
+	}
+
+	/**
+	 * Reads a SyndFeed and casts the entries returned to a list of rss.
+	 * @param rssList;
+	 * @param feed;
+	 */
+	@SuppressWarnings("unchecked")
+	private void readFeedToRssList(List<RSS> rssList, SyndFeed feed) {
+		//SupressWarnings on the feed.getEntries being casted to a List<SyndEntry>
+		for (SyndEntry entry : (List<SyndEntry>) feed.getEntries()) {
+			RSS retRss = new RSS();
+		    retRss.title = entry.getTitle();
+		    SyndContent description = entry.getDescription();
+		    if (description != null)
+		    {
+		    	String descriptionValue = description.getValue();
+		    	String cleanDescription = descriptionValue.replaceAll("\\<.*?>","").replaceAll("\\s+", " ");
+		    	retRss.summary = cleanDescription;
+		    }
+		    else
+		    {
+		    	retRss.summary = "No summary available.";
+		    }
+		    retRss.createdDate = entry.getPublishedDate();
+		    retRss.url = entry.getUri();
+		    rssList.add(retRss);
+		}
 	} 
 }
