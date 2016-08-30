@@ -10,14 +10,6 @@
 		<ui:define name="content">
  			<h2>This is RSS Reader Content</h2>
 		   	<h:form id="frmRssReader">
-		   	   	<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"/>
-		   	   	<h:outputScript>
-				    $ = jQuery;
-				    // Then you can use it
-				    $(document).ready(function() {
-				    
-				    });
-				</h:outputScript>
 				<!--     do not use an accordion panel break this shit out -->
 		   		<p:accordionPanel>
 					<p:tab id="tabRssFeedReader" title="RSS Feed Reader">
@@ -27,7 +19,7 @@
 				        	</f:facet>
 				        	#{url}
 				    	</p:dataList>
-		  					<p:inputText id="intxtRssFeed" value="#{richSiteSummaryReaderMB.rssFeed}" required="true" requiredMessage="A RSS feed url is required."/>
+	  					<p:inputText id="intxtRssFeed" value="#{richSiteSummaryReaderMB.rssFeed}" required="true" requiredMessage="A RSS feed url is required."/>
 						<p:commandButton action="#{richSiteSummaryReaderMB.refreshRss}" rendered="#{not empty richSiteSummaryReaderMB.rssObjs}" update="@form" value="Refresh Rss Feed Data" immediate="true"/>
 						<p:commandButton action="#{richSiteSummaryReaderMB.pullRss}" value="Pull Rss Feed Data" rendered="#{not empty richSiteSummaryReaderMB.rssUrls}" update="@form" immediate="true"/>
 						<p:commandButton action="#{richSiteSummaryReaderMB.addRssUrlToList}" update="@form" value="Add to RSS Feed Reader"/>
