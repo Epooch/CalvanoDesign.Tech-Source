@@ -6,49 +6,47 @@
       xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:p="http://primefaces.org/ui">
-	
-    <h:head>
-    	<title>Calvano D and D</title>
-    	<h:outputStylesheet library="css" name="sc-player-standard.css" />
-    	<h:outputStylesheet library="css" name="style.css" />
-    	<h:outputScript library="js" name="/soundCloud/sdk-3.1.2.js"/>
-    	<h:outputScript library="js" name="/soundCloud/iframe.js"/>
-<!--      	<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" /> -->
-    </h:head>
-    <h:body>
-<!--     do not use an accordion panel break this shit out -->
-    	<h:form id="frmRssReader">
-    	   	<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"/>
-    	   	<h:outputScript>
-			    $ = jQuery;
-			    // Then you can use it
-			    $(document).ready(function() {
-			    
-			    });
-			</h:outputScript>
-    		<p:accordionPanel>
-				<p:tab id="tabRssFeedReader" title="RSS Feed Reader">
-					<p:dataList id="dtalstRssUrls" value="#{richSiteSummaryReaderMB.rssUrls}" var="url" type="ordered">
-			        	<f:facet name="header">
-		            	Rss Feed URLS
-			        	</f:facet>
-			        	#{url}
-			    	</p:dataList>
-   					<p:inputText id="intxtRssFeed" value="#{richSiteSummaryReaderMB.rssFeed}" required="true" requiredMessage="A RSS feed url is required."/>
-					<p:commandButton action="#{richSiteSummaryReaderMB.refreshRss}" rendered="#{not empty richSiteSummaryReaderMB.rssObjs}" update="dtblRetRssFeed" value="Refresh Rss Feed Data" immediate="true"/>
-					<p:commandButton action="#{richSiteSummaryReaderMB.pullRss}" value="Pull Rss Feed Data" rendered="#{not empty richSiteSummaryReaderMB.rssUrls}" immediate="true"/>
-					<p:commandButton action="#{richSiteSummaryReaderMB.addRssUrlToList}" update="@form" value="Add to RSS Feed Reader"/>
-					<p:message id="msgRssFeed" for="intxtRssFeed"/>
-					<p:dataTable id="dtblRetRssFeed" var="rss" value="#{richSiteSummaryReaderMB.rssObjs}">	
-					    <p:column headerText="Rss Title">
-					        <h:outputText value="#{rss.title}" />
-					    </p:column>					 
-					    <p:column headerText="Rss Summary">
-					        <h:outputText value="#{rss.summary}" />
-					    </p:column>
-					</p:dataTable>
-				</p:tab>
-			</p:accordionPanel>
-		</h:form>
-    </h:body>
+	<ui:composition template="/template/common/commonLayout.xhtml">
+		<ui:define name="content">
+ 			<h2>This is RSS Reader Content</h2>
+		   	<h:form id="frmRssReader">
+		   	   	<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"/>
+		   	   	<h:outputScript>
+				    $ = jQuery;
+				    // Then you can use it
+				    $(document).ready(function() {
+				    
+				    });
+				</h:outputScript>
+				<!--     do not use an accordion panel break this shit out -->
+		   		<p:accordionPanel>
+					<p:tab id="tabRssFeedReader" title="RSS Feed Reader">
+						<p:dataList id="dtalstRssUrls" value="#{richSiteSummaryReaderMB.rssUrls}" var="url" type="ordered">
+				        	<f:facet name="header">
+			            	Rss Feed URLS
+				        	</f:facet>
+				        	#{url}
+				    	</p:dataList>
+		  					<p:inputText id="intxtRssFeed" value="#{richSiteSummaryReaderMB.rssFeed}" required="true" requiredMessage="A RSS feed url is required."/>
+						<p:commandButton action="#{richSiteSummaryReaderMB.refreshRss}" rendered="#{not empty richSiteSummaryReaderMB.rssObjs}" update="@form" value="Refresh Rss Feed Data" immediate="true"/>
+						<p:commandButton action="#{richSiteSummaryReaderMB.pullRss}" value="Pull Rss Feed Data" rendered="#{not empty richSiteSummaryReaderMB.rssUrls}" update="@form" immediate="true"/>
+						<p:commandButton action="#{richSiteSummaryReaderMB.addRssUrlToList}" update="@form" value="Add to RSS Feed Reader"/>
+						<p:message id="msgRssFeed" for="intxtRssFeed"/>
+						<p:dataTable id="dtblRetRssFeed" var="rss" value="#{richSiteSummaryReaderMB.rssObjs}">	
+						    <p:column headerText="Rss Title">
+						        <h:outputText value="#{rss.title}" />
+						    </p:column>					 
+						    <p:column headerText="Rss Summary">
+						        <h:outputText value="#{rss.summary}" />
+						    </p:column>
+						</p:dataTable>
+					</p:tab>
+				</p:accordionPanel>
+			</h:form>
+ 		</ui:define>
+		<ui:define name="footer">
+<!-- 		If i do not add a footer here then it will be added by default! WHOOP WHOOP! -->
+			<h2>This is page1 Footer</h2>
+		</ui:define>
+	</ui:composition>
 </html>
