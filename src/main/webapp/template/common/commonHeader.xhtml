@@ -4,10 +4,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
     <body>
 	    <ui:composition>
-			<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"/>
+	    	<p:link href="index.xhtml">
+    			<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"  />
+			</p:link>
+			<p:menubar>
+				<p:menuitem value="Rss Reader" url="rssReader.xhtml" icon="ui-icon-close" />
+				<p:menuitem value="SoundCloud Player" url="soundcloudplayer.xhtml" icon="ui-icon-close" />
+				<p:menuitem value="Quit" url="index.xhtml" icon="ui-icon-close" />
+			</p:menubar>
 	    </ui:composition>
     </body>
 </html>
