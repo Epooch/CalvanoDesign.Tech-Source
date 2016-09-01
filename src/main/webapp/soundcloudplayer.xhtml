@@ -6,25 +6,18 @@
       xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:p="http://primefaces.org/ui">
-    <h:head>
-    	<title>Calvano D and D</title>
-    	<h:outputStylesheet library="css" name="style.css" />
-    	<h:outputStylesheet library="css" name="sc-player-standard.css"/>
-    	<h:outputScript library="js" name="/soundCloud/sdk-3.1.2.js"/>
-    	<h:outputScript library="js" name="/soundCloud/iframe.js"/>
-    </h:head>
-	<h:body>
-    	<h:form id="frmSoundCloudPlayer">
-    		<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"/>
-    		<br/>
+    <ui:composition>
+    <div style="display:block; text-align:center;">
+		<h:form id="frmSoundCloudPlayer" style="display:inline-block; margin-left:auto; margin-right:auto; text-align:left;">
     		<h:outputScript id="soundcloudLogin" library="js" name="/soundCloud/login.js" rendered="#{soundCloudPlayerMB.loginShow}" />
-			<iframe width="25%" height="250" scrolling="no" frameborder="1" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/249140883&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+			<iframe width="" height="250" scrolling="no" frameborder="1" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/249140883&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
 			<br/>
 			<h:commandButton value="Login To SoundCloud" actionListener="#{soundCloudPlayerMB.requestSoundCloudLogin}"/>
 			<h:button value="Navigate to RSS Feed"  outcome="rssReader.xhtml"/>
 		</h:form>
-     	<h:outputScript library="js" name="jquery-3.1.0.min.js" target="head"/>
-    	<h:outputScript library="js" name="/soundCloud/soundcloud.player.api.js" target="head" />
-    	<h:outputScript library="js" name="/soundCloud/sc-player.js" target="head"/>
-    </h:body>
+    </div>
+   		<h:outputScript library="js" name="jquery-3.1.0.min.js" target="head"/>
+   		<h:outputScript library="js" name="/soundCloud/soundcloud.player.api.js" target="head" />
+   		<h:outputScript library="js" name="/soundCloud/sc-player.js" target="head"/>
+    </ui:composition>
 </html>
