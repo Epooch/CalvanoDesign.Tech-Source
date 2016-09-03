@@ -6,16 +6,20 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
-    <body>
+    <h:body>
 	    <ui:composition>
-	    	<p:link href="index.xhtml">
-    			<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"  />
-			</p:link>
-			<p:menubar>
-				<p:menuitem value="Rss Reader" url="rssReader.xhtml" icon="ui-icon-close" />
-				<p:menuitem value="SoundCloud Player" url="soundcloudplayer.xhtml" icon="ui-icon-close" />
-				<p:menuitem value="Quit" url="index.xhtml" icon="ui-icon-close" />
-			</p:menubar>
+<!-- 	    	<p:link href="index.xhtml"> -->
+<!--     			<p:graphicImage id="gphimgLogo" library="images" name="CDDLogo.png"  /> -->
+<!-- 			</p:link> -->
+		<div class="menuBar">
+			<a class="menuButton">Navigation</a>
+			<ul>
+				<li class="menuContent"><a href="rssReader.xhtml">Rss Reader</a></li>
+				<li class="menuContent"><a href="soundcloudplayer.xhtml">SoundCloud Player</a></li>
+				<li class="menuContent"><a href="index.xhtml">Home</a></li>
+			</ul>
+		</div>
+		<div class="menuBarBuffer"/>
 	    </ui:composition>
-    </body>
+    </h:body>
 </html>
