@@ -2,9 +2,9 @@ package tech.calvanodesign.web;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.event.ActionEvent;
+import javax.faces.bean.ViewScoped;
 
 import org.apache.log4j.Logger;
 
@@ -14,25 +14,25 @@ import org.apache.log4j.Logger;
  *
  */
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class SoundCloudPlayerMB implements Serializable {
 
 	private static final long serialVersionUID = -3069472561633582709L;
 	
 	final static Logger logger = Logger.getLogger(SoundCloudPlayerMB.class);
 	
-	private String helloWorld = "helloWorld";
-	
 	private boolean loginShow;
 	
+	@PostConstruct
 	public void init() {
-		logger.debug("SoundCloudPlayerMB.ini); " + helloWorld);
+		logger.debug("SoundCloudPlayerMB.init;");
+		this.loginShow = false;
 	}
 	
 	/**
 	 * @return the loginShow
 	 */
-	public boolean isLoginShow() {
+	public boolean getLoginShow() {
 		return loginShow;
 	}
 
@@ -43,7 +43,8 @@ public class SoundCloudPlayerMB implements Serializable {
 		this.loginShow = loginShow;
 	}
 	
-	public void requestSoundCloudLogin(ActionEvent e) {
+	public void requestSoundCloudLogin() {
+		logger.debug("SoundCloudPlayerMB.requestSoundCloudLogin;");
 		loginShow = true;
 	}
 }
