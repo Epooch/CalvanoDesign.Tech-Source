@@ -1,13 +1,109 @@
 body{
 	background-color: #404040;
+	font-family: Segoe UI, Arial, sans-serif;
+	margin: 0;
+}
+
+div.form{
+	position: absolute;
+	
 }
 
 form{
 	background-color: #575757;
-	margin-top: -3px;
 	color: #eeeeee;
 }
 
 #gphimgLogo{
 	width: 20%;
+}
+
+div.menuBar{
+	border: 3px solid #404040;
+    border-radius: 5px;
+    z-index: 1;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+div.menuBar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #5b5b5b;
+}
+
+div.menuBar ul li.menuContent{
+	float: right;
+	border-left: 1px solid #bbb;
+}
+
+div.menuBar ul li.menuContent a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;	
+}
+
+/* Change the link color to #404040 (black) on hover */
+div.menuBar ul li.menuContent a:hover {
+    background-color: #dddddd;
+    color: #404040;
+}
+
+div.menuBarBuffer {
+	margin-top: 50px;
+}
+
+div.menuBar .menuButton {
+	display: none;
+	visibility: hidden;
+}
+
+@media screen and (max-width: 600px){
+	
+	div.menuBar ul li.menuContent a, div.menuBar .menuButton {
+	    display: block;
+	    text-align: center;
+	    padding: 14px 16px;
+	    text-decoration: none;
+	}
+	
+	/* Change the background color of the menubar button when the menubar content is shown,
+	   Change the background color of the menubar list item buttons when they are hovered over */
+	div.menuBar:hover .menuButton, div.menuBar ul li.menuContent a:hover {
+	    background-color: #dddddd;
+	    color: #404040;
+	}
+	
+	div.menuBar .menuButton {
+		visibility: visible;
+		display: block;
+        background-color: #5b5b5b;
+    	color: white;
+    	padding: 16px;
+    	font-size: 16px;
+    	border: none;
+    	cursor: pointer;
+	}
+	
+	div.menuBar ul li.menuContent {
+		float: none;
+	    display: none;
+	    position: relative;
+	    min-width: 160px;
+	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	    border-left: none;
+	}
+	
+	div.menuBar:hover li.menuContent {
+	    display: block;
+	}
+	
+	div.menuBarBuffer {
+		margin-top: 0;
+	}
 }
