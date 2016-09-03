@@ -6,7 +6,6 @@ body{
 
 div.form{
 	position: absolute;
-	
 }
 
 form{
@@ -63,8 +62,7 @@ div.menuBar .menuButton {
 	visibility: hidden;
 }
 
-@media screen and (max-width: 600px){
-	
+@media screen and (max-width: 600px){ 
 	div.menuBar ul li.menuContent a, div.menuBar .menuButton {
 	    display: block;
 	    text-align: center;
