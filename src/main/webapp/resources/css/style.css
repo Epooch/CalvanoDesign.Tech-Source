@@ -4,10 +4,6 @@ body{
 	margin: 0;
 }
 
-div.form{
-	position: absolute;
-}
-
 form{
 	background-color: #575757;
 	color: #eeeeee;
