@@ -9,38 +9,26 @@
 	<ui:composition template="/template/common/commonLayout.xhtml">
 		<ui:define name="content">
 		   	<h:form id="frmRssReader">
-		   	<p:outputLabel value="This is RSS reader Content"/>
-				<!--     do not use an accordion panel break this shit out -->
-		   		<p:accordionPanel>
-					<p:tab id="tabRssFeedReader" title="RSS Feed Reader">
-						<p:dataList id="dtalstRssUrls" value="#{richSiteSummaryReaderMB.rssUrls}" var="url" type="ordered">
-				        	<f:facet name="header">
-			            	Rss Feed URLS
-				        	</f:facet>
-				        	#{url}
-				    	</p:dataList>
-	  					<p:inputText id="intxtRssFeed" value="#{richSiteSummaryReaderMB.rssFeed}" required="true" requiredMessage="A RSS feed url is required."/>
-						<p:commandButton action="#{richSiteSummaryReaderMB.refreshRss}" rendered="#{not empty richSiteSummaryReaderMB.rssObjs}" update="@form" value="Refresh Rss Feed Data" immediate="true"/>
-						<p:commandButton action="#{richSiteSummaryReaderMB.pullRss}" value="Pull Rss Feed Data" rendered="#{not empty richSiteSummaryReaderMB.rssUrls}" update="@form" immediate="true"/>
-						<p:commandButton action="#{richSiteSummaryReaderMB.addRssUrlToList}" update="@form" value="Add to RSS Feed Reader"/>
-						<p:message id="msgRssFeed" for="intxtRssFeed"/>
-						<p:dataTable id="dtblRetRssFeed" var="rss" value="#{richSiteSummaryReaderMB.rssObjs}">	
-						    <p:column headerText="Rss Title">
-						        <h:outputText value="#{rss.title}" />
-						    </p:column>					 
-						    <p:column headerText="Rss Summary">
-						        <h:outputText value="#{rss.summary}" />
-						    </p:column>
-						</p:dataTable>
-					</p:tab>
-				</p:accordionPanel>
+				<p:dataList id="dtalstRssUrls" value="#{richSiteSummaryReaderMB.rssUrls}" var="url" type="ordered">
+		        	<f:facet name="header">
+	            	Rss Feed URLS
+		        	</f:facet>
+		        	#{url}
+		    	</p:dataList>
+				<p:inputText id="intxtRssFeed" value="#{richSiteSummaryReaderMB.rssFeed}" required="true" requiredMessage="A RSS feed url is required."/>
+				<p:commandButton action="#{richSiteSummaryReaderMB.refreshRss}" rendered="#{not empty richSiteSummaryReaderMB.rssObjs}" update="@form" value="Refresh Rss Feed Data" immediate="true"/>
+				<p:commandButton action="#{richSiteSummaryReaderMB.pullRss}" value="Pull Rss Feed Data" rendered="#{not empty richSiteSummaryReaderMB.rssUrls}" update="@form" immediate="true"/>
+				<p:commandButton action="#{richSiteSummaryReaderMB.addRssUrlToList}" update="@form" value="Add to RSS Feed Reader"/>
+				<p:message id="msgRssFeed" for="intxtRssFeed"/>
+				<p:dataTable id="dtblRetRssFeed" var="rss" value="#{richSiteSummaryReaderMB.rssObjs}">	
+				    <p:column headerText="Rss Title">
+				        <h:outputText value="#{rss.title}" />
+				    </p:column>					 
+				    <p:column headerText="Rss Summary">
+				        <h:outputText value="#{rss.summary}" />
+				    </p:column>
+				</p:dataTable>
 			</h:form>
-			<br/>
-			<ui:include src="/soundcloudplayer.xhtml"/>
  		</ui:define>
-		<ui:define name="footer">
-<!-- 		If i do not add a footer here then it will be added by default! WHOOP WHOOP! -->
-			<h2>This is page1 Footer</h2>
-		</ui:define>
 	</ui:composition>
 </html>
