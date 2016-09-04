@@ -109,3 +109,53 @@ div.menuBar .menuButton {
 		margin-top: 0;
 	}
 }
+
+div.colorTheme1Test1 {
+	background-color: #000000;
+}
+
+div.colorTheme1Test2 {
+	background-color: #525252;
+}
+
+div.colorTheme1Test3 {
+	background-color: #363636;
+}
+
+div.colorTheme1Test4 {
+	background-color: #151252;
+}
+
+div.colorTheme1Test5 {
+	background-color: #203E4A;
+}
+
+div.colorTheme2Test1 {
+	background-color: #363636;
+}
+
+div.colorTheme2Test2 {
+	background-color: #717171;
+}
+
+div.colorTheme2Test3 {
+	background-color: #6CD5FA;
+}
+
+div.colorTheme2Test4 {
+	background-color: #951406;
+}
+
+div.colorTheme2Test5 {
+	background-color: #E35218;
+}
+
+#gphimgLogo{
+	width: 20%;
+}
+
+/*  #363636, #717171, #6CD5FA, #951406, #E35218 */
+/* http://designspiration.net/colors/363636,717171,6CD5FA,951406,E35218/page/1/ */
+
+/* http://designspiration.net/colors/000000,525252,363636,151252,203E4A/ */
+/*  #000000, #525252, #363636, #151252, #203E4A */
