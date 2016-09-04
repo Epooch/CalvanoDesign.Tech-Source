@@ -2,15 +2,20 @@ body{
 	background-color: #404040;
 	font-family: Segoe UI, Arial, sans-serif;
 	margin: 0;
+	top:0;
 }
 
 form{
-	background-color: #575757;
-	color: #eeeeee;
-}
-
-#gphimgLogo{
-	width: 20%;
+	margin: 3% 5% 3% 5%;
+    border-radius: 10px;
+    /* display: block; */
+    border-style: solid;
+    border-color: #575757;
+    padding: 10px;
+    position: relative;
+    top: 35px;
+    background-color: #575757;
+    color: #eeeeee;
 }
 
 div.menuBar{
@@ -33,6 +38,9 @@ div.menuBar ul{
 div.menuBar ul li.menuContent{
 	float: right;
 	border-left: 1px solid #bbb;
+    border-top: 1px solid #5b5b5b;
+    border-radius: 5px;
+    border-bottom: 1px solid #5b5b5b;
 }
 
 div.menuBar ul li.menuContent a{
