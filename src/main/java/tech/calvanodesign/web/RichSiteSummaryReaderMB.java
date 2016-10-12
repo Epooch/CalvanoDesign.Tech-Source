@@ -38,7 +38,7 @@ public class RichSiteSummaryReaderMB implements Serializable {
 	
 	@PostConstruct
 	public void init () {
-		logger.debug("RSSReaderMB.init()");
+		logger.debug(">> RSSReaderMB.init()");
 		
 		if (rssReaderBo == null)
 		{
@@ -51,6 +51,7 @@ public class RichSiteSummaryReaderMB implements Serializable {
 		rssFeed = new String();
 		rssObjs = new ArrayList<RSS>();
 		rssUrls = new ArrayList<String>();
+		logger.debug("<< RSSReaderMB.init()");
 	}
 	
 	public void pullRss() {
